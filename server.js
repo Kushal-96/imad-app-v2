@@ -96,10 +96,10 @@ var template=`<html>
 </html>`
 return template;
 }
-var counter =0;
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-  res.send(counter);
+  
 });
 app.get('/:articlesName',function(req,res){
     var articlesName=req.params.articlesName;
