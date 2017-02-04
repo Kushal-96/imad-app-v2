@@ -101,15 +101,16 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   
 });
-app.get('/:articlesName',function(req,res){
-    var articlesName=req.params.articlesName;
-   res.send(createTemplate(articles[articlesName])); 
-});
 var count=0;
 app.get('/counter',function(req,res){
     count+=1;
     res.send(count.toString()); 
 });
+app.get('/:articlesName',function(req,res){
+    var articlesName=req.params.articlesName;
+   res.send(createTemplate(articles[articlesName])); 
+});
+
 /*
 app.get('/article-three',function(req,res){
     res.send(createTemplate(articles.articleThree)); 
