@@ -108,7 +108,7 @@ app.get('/:articlesName',function(req,res){
 var count=0;
 app.get('/counter',function(req,res){
     count++;
-    res.send(count); 
+    res.send(count.toString()); 
 });
 /*
 app.get('/article-three',function(req,res){
