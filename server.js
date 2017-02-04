@@ -4,7 +4,8 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne={
+var articles={
+    articleOne: {
     title: 'Article-One |Basudeb Mitra',
     heading: 'Article-one',
     date: '4th February, 2017',
@@ -17,6 +18,34 @@ var articleOne={
             <p>
                 Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
             </p>`
+},
+    articleTwo: {
+        title: 'Article-Two |Basudeb Mitra',
+    heading: 'Article-two',
+    date: '4th February, 2017',
+    content:`<p>
+                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
+            </p>
+            <p>
+                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
+            </p>
+            <p>
+                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
+            </p>`},
+    articleThree: {
+        title: 'Article-Three |Basudeb Mitra',
+    heading: 'Article-three',
+    date: '4th February, 2017',
+    content:`<p>
+                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
+            </p>
+            <p>
+                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
+            </p>
+            <p>
+                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
+            </p>`
+    }
 };
 function createTemplate(data){
 var title=data.title;
@@ -73,10 +102,10 @@ app.get('/article-one',function(req,res){
    res.send(createTemplate(articleOne)); 
 });
 app.get('/article-two',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html')); 
+    res.send(createTemplate(articleTwo)); 
 });
 app.get('/article-three',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html')); 
+    res.send(createTemplate(articleThree)); 
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
