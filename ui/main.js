@@ -13,5 +13,5 @@ button.onclick=function(){
     }
     
   req.open('GET','http://kushal-96.imad.hasura-app.io/counter',true);
-  reqt.send(null);
+  req.send(null);
 };
