@@ -105,9 +105,12 @@ app.get('/:articlesName',function(req,res){
     var articlesName=req.params.articlesName;
    res.send(createTemplate(articles[articlesName])); 
 });
-/*app.get('/article-two',function(req,res){
-    res.send(createTemplate(articles.articleTwo)); 
+var count=0;
+app.get('/counter',function(req,res){
+    count++;
+    res.send(count); 
 });
+/*
 app.get('/article-three',function(req,res){
     res.send(createTemplate(articles.articleThree)); 
 });*/
