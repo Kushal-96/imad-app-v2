@@ -1,6 +1,5 @@
 console.log('Loaded!');
-var element=document.getElementById('one');
-element.innerHTML='new value';
+
 var img=document.getElementById('two');
 var moveright=0;
 function moveRight(){
