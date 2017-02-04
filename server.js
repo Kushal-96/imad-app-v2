@@ -91,6 +91,7 @@ var template=`<html>
         <div class="two">
             ${content}
         </div>
+        <script type="text/javascript" src="/main.js"></script>
     </body>
 </html>`
 return template;
