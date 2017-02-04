@@ -26,4 +26,5 @@ body {
 #ab{
     border: 2px solid black;
     float: left;
+    height: 100px;
 }
