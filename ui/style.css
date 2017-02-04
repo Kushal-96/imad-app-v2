@@ -23,3 +23,7 @@ body {
     width: 20%;
     height: 10%;
 }
+#ab{
+    border: 2px solid black;
+    float: left;
+}
