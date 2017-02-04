@@ -1,12 +1,7 @@
-console.log('Loaded!');
-
-var img=document.getElementById('two');
-var moveright=0;
-function moveRight(){
-    moveright+=10;
-    img.style.marginLeft=moveright+'px';
-}
-img.onclick=function(){
-    var interval=setInterval(moveRight,100);
-    
+var button=document.getElementById('counter');
+var counter=0;
+button.onclick=function(){
+  counter+=1;
+  var span=document.getElementById('qw');
+  span.innerHTML=counter;
 };
