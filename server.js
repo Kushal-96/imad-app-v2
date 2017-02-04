@@ -91,13 +91,14 @@ var template=`<html>
         <div class="two">
             ${content}
         </div>
-        <script type="text/javascript" src="/main.js"></script>
+        
     </body>
 </html>`
 return template;
 }
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.sendFile(path.join(__dirname, 'ui', '/main.js'));
 });
 app.get('/:articlesName',function(req,res){
     var articlesName=req.params.articlesName;
