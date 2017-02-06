@@ -29,7 +29,7 @@ but.onclick=function(){
                 
             }
             var qw=document.getElementById('list');
-            qw.innerHTML=qw;
+            qw.innerHTML=st;
             
         }
     };
