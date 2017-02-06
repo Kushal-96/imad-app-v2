@@ -37,6 +37,7 @@ but.onclick=function(){
 
     var nameInp=document.getElementById('name');
     var name=nameInp.value;
+    confirm();
     req.open('GET','http://kushal-96.imad.hasura-app.io/submit-value?name='+name,true);
     req.send(null);
 };
