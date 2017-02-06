@@ -20,6 +20,7 @@ but.onclick=function(){
     var rq=new XMLHttpRequest();
     rq.onreadystatechange=function(){
         if(rq.readyState===XMLHttpRequest.DONE && rq.status===200){
+            alert();
             var name=rq.responseText;
             name=JSON.parse('name');
             var l=document.getElementById('list');
