@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var crypto= require('crypto');
 var Pool= require('pg').Pool;
-
+var bodyParser=require('body-parser');
 var config={
     user:'kushal-96',
     database:'kushal-96',
@@ -14,49 +14,7 @@ var config={
 
 var app = express();
 app.use(morgan('combined'));
-var articles={
-    'article-one': {
-    title: 'Article-One |Basudeb Mitra',
-    heading: 'Article-one',
-    date: '4th February, 2017',
-    content:`<p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>
-            <p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>
-            <p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>`
-},
-    'article-two': {
-        title: 'Article-Two |Basudeb Mitra',
-        heading: 'Article-two',
-        date: '4th February, 2017',
-        content:`<p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>
-            <p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>
-            <p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>`},
-    'article-three': {
-        title: 'Article-Three |Basudeb Mitra',
-        heading: 'Article-three',
-        date: '4th February, 2017',
-        content:`<p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>
-            <p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>
-            <p>
-                Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.Today, I learned to add web-pages to an existing web-server.
-            </p>`
-    }
-};
+app.use(bodyParser.json());
 function createTemplate(data){
 var title=data.title;
 var date=data.date;
@@ -115,6 +73,22 @@ app.get('/hash/:input',function(req,res){
    res.send(hashed);
 });
 
+app.post('/create-user',function(req,res){
+   var username=req.body.username;
+   var password=req.body.password;
+   var salt=crypto.randomBytes(128).toString('hex');
+   var dbString=hash(password,salt);
+   pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
+       if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            res.send('User successfully created:'+username);
+        }
+   
+       
+   });   
+   });
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   
