@@ -91,7 +91,7 @@ var template=`<html>
         <a href="/">Home</a>
         <hr/>
         <div class="one">
-            ${date.todateString()}
+            ${date.toDateString()}
         </div>
         <div align="center" id="three">
             <h3>${heading}</h3>
